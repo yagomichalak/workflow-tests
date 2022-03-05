@@ -23,8 +23,9 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       env:
-        RANDOM_VAR: ${{secrets.RANDOM_VAR}}
+        RANDOM_VAR: ${{ secrets.RANDOM_VAR }}
       run: |
+        export RANDOM_VAR=${{ secrets.RANDOM_VAR }}
         echo '{"RANDOM_VAR": "${{ secrets.RANDOM_VAR }}"}'
         python -m pip install --upgrade pip
         python -m pip install pytest
