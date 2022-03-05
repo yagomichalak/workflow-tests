@@ -1,7 +1,5 @@
 import pytest
 import os
-from dotenv import load_dotenv
-load_dotenv()
 
 random_var: int = int(os.getenv('RANDOM_VAR'))
 
