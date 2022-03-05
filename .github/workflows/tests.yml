@@ -7,6 +7,9 @@ on:
   - push
   - pull_request
 
+env:
+  RANDOM_VAR: ${{ secrets.RANDOM_VAR }}
+
 jobs:
   test:
     runs-on: ${{ matrix.os }}
@@ -22,12 +25,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
-      environment: tests
-      env:
-        RANDOM_VAR: ${{ secrets.RANDOM_VAR }}
       run: |
-        export RANDOM_VAR=${{ secrets.RANDOM_VAR }}
-        echo '{"RANDOM_VAR": "${{ secrets.RANDOM_VAR }}"}'
         python -m pip install --upgrade pip
         python -m pip install pytest
         pip install -r requirements.txt
