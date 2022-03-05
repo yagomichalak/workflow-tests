@@ -23,9 +23,9 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       env:
-        RANDOM_VAR: ${{tests.RANDOM_VAR}}
+        RANDOM_VAR: ${{secrets.RANDOM_VAR}}
       run: |
-        echo '{"RANDOM_VAR": "${{ tests.RANDOM_VAR }}"}'
+        echo '{"RANDOM_VAR": "${{ secrets.RANDOM_VAR }}"}'
         python -m pip install --upgrade pip
         python -m pip install pytest
         pip install -r requirements.txt
