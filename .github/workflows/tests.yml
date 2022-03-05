@@ -9,8 +9,7 @@ on:
 
 jobs:
   test:
-    environment: 
-      name: tests
+    environment: tests
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
