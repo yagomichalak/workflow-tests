@@ -7,9 +7,6 @@ on:
   - push
   - pull_request
 
-env:
-  RANDOM_VAR: ${{ secrets.RANDOM_VAR }}
-
 jobs:
   test:
     runs-on: ${{ matrix.os }}
@@ -30,5 +27,7 @@ jobs:
         python -m pip install pytest
         pip install -r requirements.txt
     - name: Test with pytest
+      env:
+        RANDOM_VAR: ${{ secrets.RANDOM_VAR }}
       run: |
         pytest
