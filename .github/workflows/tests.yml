@@ -9,7 +9,11 @@ on:
 
 jobs:
   test:
+    environment: tests
+    env:
+      RANDOM_VAR: ${{ secrets.RANDOM_VAR }}
     runs-on: ${{ matrix.os }}
+    
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
@@ -28,7 +32,5 @@ jobs:
           python -m pip install pytest
           pip install -r requirements.txt
       - name: Test with pytest
-        env:
-          RANDOM_VAR: ${{ secrets.RANDOM_VAR }}
         run: |
           pytest
