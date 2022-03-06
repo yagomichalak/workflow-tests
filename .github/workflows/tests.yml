@@ -22,8 +22,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
-        env:
-          RANDOM_VAR: ${{ secrets.RANDOM_VAR }}
         run: |
           echo ${{ secrets.RANDOM_VAR }}
           echo ${{ RANDOM_VAR }}
@@ -32,5 +30,7 @@ jobs:
           python -m pip install pytest
           pip install -r requirements.txt
       - name: Test with pytest
+        env:
+          RANDOM_VAR: ${{ secrets.RANDOM_VAR }}
         run: |
           pytest
